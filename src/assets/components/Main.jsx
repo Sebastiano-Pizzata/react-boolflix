@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 
 const Main = () => {
     const [movies, setMovies] = useState([])
-    const [error, setError] = useState(null);
 
     const apiKey = import.meta.env.VITE_API_KEY
     const url = import.meta.env.VITE_ENDPOINT_URL
@@ -15,15 +14,19 @@ const Main = () => {
     }, [])
 
     return (
-        <ul>
-            {
-                movies.map((movie) => {
-                    return (
-                        <li key={movie.id}>{movie.title}</li>
-                    )
-                })
-            }
-        </ul>
+        <main className=" bg-secondary">
+            <div className="container">
+                <ul>
+                    {
+                        movies.map((movie) => {
+                            return (
+                                <li key={movie.id}>{movie.title}</li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+        </main>
     )
 
 
