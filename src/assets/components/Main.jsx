@@ -3,14 +3,16 @@ import { useState, useEffect } from "react"
 
 const Main = () => {
     const [movies, setMovies] = useState([])
+    const [error, setError] = useState(null);
 
-    const apiKey = "00afb199b77cb393ea505019758394b3"
+    const apiKey = import.meta.env.VITE_API_KEY
+    const url = import.meta.env.VITE_ENDPOINT_URL
 
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=it-IT&page=1`)
+        axios.get(`${url}?api_key=${apiKey}&language=it-IT&page=1`)
             .then((res) => setMovies(res.data.results))
-    }, [])
 
+    }, [])
 
     return (
         <ul>
