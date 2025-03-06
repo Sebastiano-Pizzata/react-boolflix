@@ -25,7 +25,7 @@ const GlobalProvider = ({ children }) => {
     }, [query])
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setQuery("")
     }
 
