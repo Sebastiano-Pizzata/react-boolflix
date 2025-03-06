@@ -4,6 +4,8 @@ import { useGlobalContext } from "../../context/GlobalContext"
 const Main = () => {
     const { movies, tvs, fetchData } = useGlobalContext()
 
+    const imageUrl = import.meta.env.VITE_IMAGE_URL
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -11,27 +13,49 @@ const Main = () => {
     return (
         <main>
             <div className="container">
-                <ul>
+                <div className="row">
+
                     {
                         movies.map((movie) => {
                             return (
-                                <li key={movie.id}>{movie.title}</li>
+                                <div className="col-4 mt-2 mb-2">
+                                    <div key={movie.id} className="card">
+                                        <img src={`${imageUrl}${movie.poster_path}`} className="card-img-top" alt="" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{movie.title}</h5>
+                                        </div>
+                                    </div>
+                                </div>
                             )
                         })
                     }
-                </ul>
+
+
+                </div>
+
+
+
             </div>
             <div className="container">
+                <div className="row">
 
-                <ul>
                     {
                         tvs.map((movie) => {
                             return (
-                                <li key={movie.id}>{movie.original_name}</li>
+                                <div className="col-4 mt-2 mb-2">
+                                    <div key={movie.id} className="card">
+                                        <img src={`${imageUrl}${movie.poster_path}`} className="card-img-top" alt="" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{movie.name}</h5>
+                                        </div>
+                                    </div>
+                                </div>
                             )
                         })
                     }
-                </ul>
+
+
+                </div>
             </div>
         </main>
     )
